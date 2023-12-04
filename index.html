@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <div class="form-container">
+      <div class="formsubmissionindicator">
+        <p id="formerrormessage">Your form is not submitted</p>
+        <p id="formsuccessmessage">Thank you for your response</p>
+      </div>
+      <form action="#" method="post" class="formdesign">
+        <h1 class="form-headline">Contact Me</h1>
+        <div class="floating-labels">
+          <i class="fa fa-user align-self-center"></i>
+          <input
+            type="text"
+            name="name"
+            placeholder="Enter your valid name"
+            class="inputfields"
+            id="namefield"
+            required
+          />
+          <span class="inputlabels">Name</span>
+          <small id="errorname"></small>
+        </div>
+        <div class="floating-labels">
+          <i class="fa fa-envelope align-self-center"></i>
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter your valid email id"
+            class="inputfields"
+            id="emailfield"
+            required
+          />
+          <span class="inputlabels">Email ID</span>
+          <small id="erroremail"></small>
+        </div>
+        <div class="floating-labels">
+          <i class="fa fa-phone align-self-center"></i>
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Enter your valid phone number"
+            class="inputfields"
+            id="phonefield"
+            required
+          />
+          <span class="inputlabels">Phone No.</span>
+          <small id="errorphone"></small>
+        </div>
+        <div class="floating-labels">
+          <i class="fa fa-info-circle align-self-center"></i>
+          <input
+            type="text"
+            name="subject"
+            placeholder="Enter your valid subject"
+            class="inputfields"
+            id="subjectfield"
+            required
+          />
+          <span class="inputlabels">Subject</span>
+          <small id="errorsubject"></small>
+        </div>
+        <div class="floating-labels">
+          <i class="fa fa-pencil align-self-center"></i>
+          <textarea
+            name="message"
+            id="messagefield"
+            class="inputfields"
+            placeholder="Enter your valid message"
+            required
+          ></textarea>
+          <span class="messageboxinputlabels">Message</span>
+          <small id="errormessage"></small>
+        </div>
+        <button class="submitbtn">
+          <i class="fas fa-paper-plane"></i> send message
+        </button>
+      </form>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
