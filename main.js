@@ -12,6 +12,7 @@ const submitbtn = document.querySelector(".submitbtn");
 const form = document.querySelector(".formdesign");
 const formerrormessage = document.getElementById("formerrormessage");
 const formsuccessmessage = document.getElementById("formsuccessmessage");
+// by default the valid input fields are set to false so the user cannot submit the form if the input fields are passed by the regex (regular expression) then valid fields are set to true and the user can submit the form
 let validname = false;
 let validemail = false;
 let validphone = false;
@@ -92,6 +93,7 @@ messagefield.addEventListener("blur", (e) => {
     validmessage = false;
   }
 });
+// if all the fields are valid then we can submit the form and it will show success or error message depending upon the user's input
 submitbtn.addEventListener("click", (e) => {
   e.preventDefault();
   if (validname && validemail && validphone && validsubject && validmessage) {
