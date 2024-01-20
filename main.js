@@ -9,9 +9,10 @@ const errorphone = document.getElementById("errorphone");
 const errorsubject = document.getElementById("errorsubject");
 const errormessage = document.getElementById("errormessage");
 const submitbtn = document.querySelector(".submitbtn");
-const form = document.querySelector(".formdesign");
+const detailsform = document.querySelector(".formdesign");
 const formerrormessage = document.getElementById("formerrormessage");
 const formsuccessmessage = document.getElementById("formsuccessmessage");
+const emailiduserexists = document.getElementById("emailiduserexists");
 // by default the valid input fields are set to false so the user cannot submit the form if the input fields are passed by the regex (regular expression) then valid fields are set to true and the user can submit the form
 let validname = false;
 let validemail = false;
@@ -93,18 +94,48 @@ messagefield.addEventListener("blur", (e) => {
     validmessage = false;
   }
 });
-// if all the fields are valid then we can submit the form and it will show success or error message depending upon the user's input
-submitbtn.addEventListener("click", (e) => {
+// if all the user inputs are valid then we can submit the form and it will show success or error message depending upon the user's input or if the existing emailid user tries to again register then it will get existing email id validation error
+detailsform.addEventListener("submit", (e) => {
   e.preventDefault();
   if (validname && validemail && validphone && validsubject && validmessage) {
-    console.log(`ok`);
     formsuccessmessage.style.display = "block";
     formerrormessage.style.display = "none";
-    form.reset();
+    console.log("ok");
+    // ================= store user's details in localstorage =================
+    let storename = namefield.value;
+    let storeemail = emailfield.value;
+    let storephone = phonefield.value;
+    // ================= retrieve user's details from localstorage =================
+    let formdatabase = new Array();
+    formdatabase = JSON.parse(localStorage.getItem("formdata"))
+      ? JSON.parse(localStorage.getItem("formdata"))
+      : [];
+    // ================= check for duplicate entries of user's existing email address =================
+    if (
+      formdatabase.some((duplicatedataentry) => {
+        return duplicatedataentry.emailid === storeemail;
+      })
+    ) {
+      emailiduserexists.style.display = "block";
+      formsuccessmessage.style.display = "none";
+    } else {
+      let formdataentry = {
+        name: storename,
+        emailid: storeemail,
+        phonenumber: storephone,
+      };
+      formdatabase.push(formdataentry);
+      let storeformdata = localStorage.setItem(
+        "formdata",
+        JSON.stringify(formdatabase)
+      );
+      emailiduserexists.style.display = "none";
+    }
+    detailsform.reset();
   } else {
-    console.log(`not ok`);
     formsuccessmessage.style.display = "none";
     formerrormessage.style.display = "block";
-    form.reset();
+    detailsform.reset();
+    console.log("not ok");
   }
 });

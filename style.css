@@ -120,6 +120,7 @@ body {
   display: none;
 }
 
+#emailiduserexists,
 #formerrormessage {
   background: #f491a5;
   text-align: center;
