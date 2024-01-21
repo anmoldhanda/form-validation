@@ -8,11 +8,6 @@ const erroremail = document.getElementById("erroremail");
 const errorphone = document.getElementById("errorphone");
 const errorsubject = document.getElementById("errorsubject");
 const errormessage = document.getElementById("errormessage");
-const submitbtn = document.querySelector(".submitbtn");
-const detailsform = document.querySelector(".formdesign");
-const formerrormessage = document.getElementById("formerrormessage");
-const formsuccessmessage = document.getElementById("formsuccessmessage");
-const emailiduserexists = document.getElementById("emailiduserexists");
 // by default the valid input fields are set to false so the user cannot submit the form if the input fields are passed by the regex (regular expression) then valid fields are set to true and the user can submit the form
 let validname = false;
 let validemail = false;
@@ -95,6 +90,11 @@ messagefield.addEventListener("blur", (e) => {
   }
 });
 // if all the user inputs are valid then we can submit the form and it will show success or error message depending upon the user's input or if the existing emailid user tries to again register then it will get existing email id validation error
+const submitbtn = document.querySelector(".submitbtn");
+const detailsform = document.querySelector(".formdesign");
+const formerrormessage = document.getElementById("formerrormessage");
+const formsuccessmessage = document.getElementById("formsuccessmessage");
+const emailiduserexists = document.getElementById("emailiduserexists");
 detailsform.addEventListener("submit", (e) => {
   e.preventDefault();
   if (validname && validemail && validphone && validsubject && validmessage) {
